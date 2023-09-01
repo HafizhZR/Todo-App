@@ -29,7 +29,7 @@ const inputClasses = computed(() => {
 </script>
 
 <template>
-  <div class="container">
+  <div class="container max-w-[800px]">
     <input type="text" v-model="inputValue" @input="updateValue" @keyup.enter="addTodo" :class="inputClasses"
       placeholder="✎ What needs to be done" class="w-full h-[60px] px-4 rounded-md text-xl" />
   </div>

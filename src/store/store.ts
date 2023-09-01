@@ -8,7 +8,7 @@ export interface ITodo {
   completed: boolean;
 }
 
-interface TodoState {
+type TodoState = {
   todos: ITodo[];
   filterTodo: ITodo[];
   isFetched: boolean;
@@ -56,7 +56,7 @@ export const useTodoStore = defineStore("todo", {
           this.isFetched = true;
           const newTodo: ITodo = {
             userId: 1,
-            id: Date.now(),
+            id: this.todos.length + 1,
             title: this.title,
             completed: false,
           };

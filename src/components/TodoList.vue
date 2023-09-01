@@ -12,6 +12,7 @@ const showConfirmation = ref(false);
 
 const confirmDeletion = () => {
     showConfirmation.value = true;
+    
 };
 
 const cancelDeletion = () => {
@@ -20,14 +21,14 @@ const cancelDeletion = () => {
 </script>
 
 <template>
-    <div class="flex items-center justify-between rounded-md bg-[#454545] w-[800px] px-8 py-5 my-1">
-        <div class="flex items-center gap-7 h-[60px]">
-            <input class="h-[25px] w-[25px]" type="checkbox" v-model="todos.completed" @change="updateTodo(todos.id, todos.completed)"/>
-            <p :class="['text-xl', todos.completed ? 'line-through' : '']">{{ todos.title }}</p>
+    <div class="flex items-center justify-between rounded-md bg-[#454545] px-8 py-5 my-1 max-w-[800px]">
+        <div class="flex items-center gap-5 h-[60px]">
+            <input class="min-h-[25px] min-w-[25px]" type="checkbox" v-model="todos.completed" @change="updateTodo(todos.id, todos.completed)"/>
+            <p :class="['text-md md:text-lg lg:text-xl', todos.completed ? 'line-through' : '']">{{ todos.title }}</p>
         </div>
         <button 
             v-if="!showConfirmation" 
-            class="text-red-600"
+            class="text-red-600 ml-3"
             @click="confirmDeletion">
             <span class="material-symbols-outlined">delete</span>
         </button>
