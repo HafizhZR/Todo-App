@@ -19,8 +19,8 @@ onMounted(() => {
       <div class="py-3 flex font-light">
         <TodoFilter />
       </div>
-      <div v-for="todo in todoStore.filterTodo" :key="todo.id">
-        <TodoList :todos="todo" :updateTodo="todoStore.updateTodo" :deleteTodo="todoStore.deleteTodo"/>
+      <div v-for="todo in todoStore.filterTodo" :key="todo.title">
+        <TodoList :todos="todo" :deleteTodo="todoStore.deleteTodo"/>
       </div>
     </div>
   </template>

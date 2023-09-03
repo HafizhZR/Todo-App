@@ -69,26 +69,17 @@ export const useTodoStore = defineStore("todo", {
           this.title = "";
           this.isFetched = false;
         } else {
-          window.alert("Mohon Masukkan Judul Todo");
+          window.alert("Masukkan Todo Terlebih Dahulu!");
         }
       } catch (error) {
         console.error(error);
       }
     },
-    async updateTodo(id: number, status: boolean) {
-      try {
-        await axios.put(`https://jsonplaceholder.typicode.com/todos/${id}`, {
-          completed: status,
-        });
-      } catch (error) {
-        console.error(error);
-      }
-    },
-    async deleteTodo(id: number) {
+    async deleteTodo(title: string) {
       try {
         this.isFetched = true;
-        await axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`);
-        this.todos = this.todos.filter((todo) => todo.id !== id);
+        await axios.delete(`https://jsonplaceholder.typicode.com/todos/${title}`);
+        this.todos = this.todos.filter((todo) => todo.title !== title);
         this.filterTodo = this.todos;
         this.isFetched = false;
       } catch (error) {
