@@ -1,19 +1,14 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 
-const { modelValue, isCompleted } = defineProps({
-  modelValue: String,
+const { textValue, isCompleted } = defineProps({
+  textValue: String,
   isCompleted: Boolean,
 });
 
 const emit = defineEmits(['update:modelValue']);
 
-const inputValue = ref(modelValue);
-
-const updateValue = (event: Event) => {
-  const value = (event.target as HTMLInputElement).value;
-  inputValue.value = value;
-};
+const inputValue = ref(textValue);
 
 const addTodo = () => {
   emit('update:modelValue', inputValue.value);
@@ -29,8 +24,8 @@ const inputClasses = computed(() => {
 </script>
 
 <template>
-  <div class="container max-w-[800px]">
-    <input type="text" v-model="inputValue" @input="updateValue" @keyup.enter="addTodo" :class="inputClasses"
+  <div class="container max-w-[800px] box-border">
+    <input type="text" v-model="inputValue" @keyup.enter="addTodo" :class="inputClasses"
       placeholder="✎ What needs to be done" class="w-full h-[60px] px-4 rounded-md text-xl" />
   </div>
 </template>
